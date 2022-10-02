@@ -6,7 +6,7 @@ __status__      = "In dev"
 
 """
 Program to count the matches of a pattern introduced using the keyboard against all the proteins in the dataset using
-sequential programming in Python
+multiprocessing programming in Python
 """
 
 import time
@@ -41,11 +41,6 @@ if __name__ == '__main__':
     hits = countMatches(Pattern= str(sequence), File= file)
     elapsed_time = time.time() - t_stamp
     print("Elapsed execution time: ",elapsed_time," s")
-    plt.bar(list(hits.keys()), hits.values(), color = 'g')
-    plt.show()
-    hits = {k: v for k,v in sorted(hits.items(), key=itemgetter(1), reverse=True)}
-    print({k: hits[k] for k in list(hits)[:5]})
-
-
-
-
+    #plt.bar(list(hits.keys()), hits.values(), color = 'g')
+    #plt.show()
+    {k: v for k,v in sorted(hits.items(), key=itemgetter(1))}
