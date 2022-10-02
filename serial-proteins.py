@@ -18,7 +18,7 @@ with open("proteins.csv", 'r') as in_file:
         if occurrence!=0: l.append((i[0],occurrence))
     l.sort(key= lambda tup: tup[1], reverse=True)
     print(l[:10])
-    plt.hist(l[:2])
+    plt.hist(l[:10])
     plt.show()
 
 
