@@ -9,6 +9,7 @@ Program to count the matches of a pattern introduced using the keyboard against 
 sequential programming in Python
 """
 
+import itertools
 import time
 import csv
 import re
@@ -41,10 +42,12 @@ if __name__ == '__main__':
     hits = countMatches(Pattern= str(sequence), File= file)
     elapsed_time = time.time() - t_stamp
     print("Elapsed execution time: ",elapsed_time," s")
-    plt.bar(list(hits.keys()), hits.values(), color = 'g')
-    plt.show()
     hits = {k: v for k,v in sorted(hits.items(), key=itemgetter(1), reverse=True)}
     print({k: hits[k] for k in list(hits)[:5]})
+    hits_10 = dict(itertools.islice(hits.items(),10))
+    plt.bar([ str(i) for i in hits_10.keys()], hits_10.values(), color='g')
+    plt.show()
+    
 
 
 
