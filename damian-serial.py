@@ -40,8 +40,7 @@ if __name__ == '__main__':
     sequence = getSequence()
     t_stamp = time.time()
     hits = countMatches(Pattern= str(sequence), File= file)
-    elapsed_time = time.time() - t_stamp
-    print("Elapsed execution time: ",elapsed_time," s")
+    print("Elapsed execution time: ",time.time() - t_stamp," s")
     hits = {k: v for k,v in sorted(hits.items(), key=itemgetter(1), reverse=True)}
     print({k: hits[k] for k in list(hits)[:5]})
     hits_10 = dict(itertools.islice(hits.items(),10))
