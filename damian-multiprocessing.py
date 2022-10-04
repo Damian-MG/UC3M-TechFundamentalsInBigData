@@ -7,6 +7,13 @@ __status__      = "In dev"
 """
 Program to count the matches of a pattern introduced using the keyboard against all the proteins in the dataset using
 multiprocessing programming in Python
+
+Multiprocessing:
+- A new process is started (independent from the parent process)
+- Starting a process is slower than starting a thread
+- Memory is not shared between processes
+- Mutexes not necessary (unless threading in the new process)
+- One GIL (Global Interpreter Lock) for each process
 """
 
 from itertools import islice
@@ -50,11 +57,11 @@ def countMatches(Start, Stop, Pattern, File):
 
 if __name__ == '__main__':
     sequence = getSequence()
-    iterdata = chunking(Lines= getLength(file))
+    iterdata = chunking(Lines= getLength(file)) # si lo quieres correr en windows quita el getLength y pon un entero con el numero de lineas
     iterdata = [(start, stop, sequence, file) for start, stop in iterdata.items()]
     t_stamp = time.time()
     pool = mp.Pool(mp.cpu_count())
-    results = pool.starmap(countMatches, iterdata)
+    results = pool.starmap(countMatches, iterdata) # probar tbm el asincrono a ver que pasa
     pool.close()
     print("Elapsed execution time: ",time.time() - t_stamp," s")
     hits = dict(ChainMap(*results))
