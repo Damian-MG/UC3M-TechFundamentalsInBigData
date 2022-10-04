@@ -17,9 +17,13 @@ import re
 import matplotlib.pyplot as plt
 import multiprocessing as mp
 from collections import ChainMap
+import subprocess as sp
+
 
 file =  "proteins.csv"
-lines  = 50000
+
+def getLength(file):
+    return int(sp.getoutput("tail "+file+" -n 1 | tr -dc '0-9'"))
 
 def getSequence():
     check = False
@@ -46,7 +50,7 @@ def countMatches(Start, Stop, Pattern, File):
 
 if __name__ == '__main__':
     sequence = getSequence()
-    iterdata = chunking(Lines= lines)
+    iterdata = chunking(Lines= getLength(file))
     iterdata = [(start, stop, sequence, file) for start, stop in iterdata.items()]
     t_stamp = time.time()
     pool = mp.Pool(mp.cpu_count())
@@ -57,6 +61,6 @@ if __name__ == '__main__':
     hits = {k: v for k,v in sorted(hits.items(), key=itemgetter(1), reverse=True)}
     print({k: hits[k] for k in list(hits)[:5]})
     hits_10 = dict(islice(hits.items(),10))
-    plt.bar([ str(i) for i in hits_10.keys()], hits_10.values(), color='g')
-    plt.show()
+    #plt.bar([ str(i) for i in hits_10.keys()], hits_10.values(), color='g')
+    #plt.show()
    
