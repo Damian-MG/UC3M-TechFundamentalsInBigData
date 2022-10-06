@@ -15,14 +15,17 @@ https://ec.europa.eu/eurostat/web/query-builder/getting-started/query-builder
 
 import requests
 import json
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 # With query builder get the URL
 url = 'http://ec.europa.eu/eurostat/wdds/rest/data/v2.1/json/en/ei_bsco_m?indic=BS-CSMCI&precision=1&unit=BAL&s_adj=SA'
 answer = requests.get(url)
-values = json.loads(answer.text)
-with open('confidence.json', 'w') as json_file:
-    json.dump(values, json_file)
+answer = json.loads(answer.text)
+plt.hist(answer['value'].values())
+plt.xticks(rotation=45)
+plt.title('Histogram of monthly consumer confidence')
+plt.xlabel('Consumer confidence?')
+plt.ylabel('Counts?')
+plt.show()
 
-# Falta hacer la gráfica pq no entiendo los datos
 
