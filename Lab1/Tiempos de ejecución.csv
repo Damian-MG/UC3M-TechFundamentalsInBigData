@@ -1,0 +1,41 @@
+﻿SERIAL;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);0,1529;1,7701;15,8862
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,1023;0,9788;9,6764
+Super ordenador de Nerea;;;
+;;;
+MULTIPROCESS mapstarasync;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);1,1682;1,7314;6,6101
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,0524;0,3593;3,3345
+Super ordenador de Nerea;;;
+;;;
+MULTITHREAD - 8 threads;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);0,1937;2,2109;22,9519
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,2203;1,4105;17,897
+Super ordenador de Nerea;;;
+;;;
+MULTITHREAD - 6 threads;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);0,1605;2,5569;25,6789
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,2032;1,9231;20,9851
+Super ordenador de Nerea;;;
+;;;
+MULTITHREAD - 4 threads;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);0,2792;2,1777;28,3404
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,2766;2,5565;23,1826
+Super ordenador de Nerea;;;
+;;;
+MULTITHREAD - 2 threads;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);0,3087;3,1013;30,5182
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,2666;2,3709;27,1569
+Super ordenador de Nerea;;;
+;;;
+MULTITHREAD - 5 threads;;;
+Configuración;50k lineas;500k lineas;5M lineas
+Windows (i7-8550U / 8procesadores lógicos);0,1939;2,629;27,4721
+Ubuntu (HyperV on i7-8550U / 8procesadores lógicos);0,1266;1,891;23,6537
+Super ordenador de Nerea;;;
