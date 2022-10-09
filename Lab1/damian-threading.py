@@ -63,7 +63,7 @@ cause some performance degradation.
 if __name__ == '__main__':
     sequence = getSequence()
     num_threads = 5 # optimal thread number found for 500.000 lines
-    iterdata = chunking(Lines= getLength(file), Num_threads= num_threads))
+    iterdata = chunking(Lines= getLength(file), Num_threads= num_threads)
     results = []
     iterdata = [(start, stop, sequence, file) for start, stop in iterdata.items()]
     ths = []
