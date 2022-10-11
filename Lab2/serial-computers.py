@@ -13,6 +13,20 @@ from sklearn.cluster import KMeans
 from sklearn import preprocessing 
 
 
+def show_elbowGraph(Ks,Errors):
+    plt.figure(figsize=(10,5.5))
+    plt.plot(Ks,Errors)
+    plt.title('Elbow graph')
+    plt.ylabel('average distance between points and their centroid')
+    plt.xlabel('Number of clusters (k)')
+    plt.show()
+
+def avg_distance(dataset,Centroids,clasif):
+    m,n = dataset.shape
+    clasif = clasif.astype(int)
+    avg = np.sum(np.sum((dataset[:,1:]-Centroids[clasif])**2))/m
+    return avg
+    
 #step -1:
 def get_dataset():
     #Extraemos el dataframe del csv y modificamos las variables binarias
@@ -97,9 +111,9 @@ def kmeans(dataset, K):
         error = np.sum(abs(C[:,1:]-C0[:,1:]))
         #print(C)
         #print(C0)
-        print('error= ' + str(error) + ' y ite= ' + str(ite))
-       
-    return C
+    print('error= ' + str(error) + ' y ite= ' + str(ite))
+    clasif =  clasification(npdf,C)  
+    return C, clasif
         
      
             
@@ -115,7 +129,8 @@ if __name__ == '__main__':
     npdf = data.values #TRASNFORMA EL DATAFRAME EN NP.ARRAY
     #si no os funciona esto utilizad data.to_numpy()
     #depende de la versión de pandas que tengais
-    C= kmeans(npdf,3)
+    
+    '''
     #Grafica SOLO de las 2 primeras variables
     plt.scatter(data["price"],data["ram"],c='black')
     plt.scatter(C[:,0:1],C[:,0:1],c='red')
@@ -123,6 +138,29 @@ if __name__ == '__main__':
     plt.ylabel('speed')
     plt.show()
     print(C)  
+   '''
+    distortions = []
+    K = range(1,8)
+    for k in K:
+        kmeanModel = KMeans(n_clusters=k)
+        kmeanModel.fit(npdf[:,1:])
+        distortions.append(kmeanModel.inertia_)
+    plt.figure(figsize=(15,5.5))
+    plt.plot(K, distortions, 'bx-')
+    plt.xlabel('k')
+    plt.ylabel('Distortion')
+    plt.title('The Elbow Method showing the optimal k')
+    plt.show()
     
-    #kMeans = KMeans(n_clusters=3, random_state=0).fit(npdf[:,1:]) 
-    #print(kMeans.cluster_centers_)
+    K_Dist= []
+    Ks = [1,2,3,4,5,6,7]
+    for k in Ks:
+        C, clasif= kmeans(npdf,k)
+        avgDist= avg_distance(npdf,C,clasif)
+        K_Dist.append(avgDist)
+        
+    show_elbowGraph(Ks,K_Dist)
+    kmean = KMeans(n_clusters=3).fit(npdf[:,1:])   
+    print(kmean.cluster_centers_)
+    C,clasif = kmeans(npdf,3)
+    print(C)
