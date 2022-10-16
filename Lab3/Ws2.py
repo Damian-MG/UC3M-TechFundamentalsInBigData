@@ -1,7 +1,7 @@
 __author__      = "DAMIAN Maleno, NEREA Izcue, PABLO Alonso "
 __credits__     = ["Damian Maleno", "Nerea Izcue", "Pablo Alonso"]
 __version__     = "1.0"
-__email__       = ["100484916@alumnos.uc3m.es",]
+__email__       = ["100484916@alumnos.uc3m.es","100492040@alumnos.uc3m.es","100483840@alumnos.uc3m.es"]
 __status__      = "Finished"
 
 """
