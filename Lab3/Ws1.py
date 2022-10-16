@@ -5,7 +5,7 @@ __email__       = ["100484916@alumnos.uc3m.es",]
 __status__      = "In dev"
 
 """
-Program to get the balance data for the Consumer confidence indicator, that us seasonally adjusted.
+Program to get the balance data for the Consumer Confidence Indicator, that us seasonally adjusted.
 And make an histogram out of it
 Eurostat API:
 https://wikis.ec.europa.eu/display/EUROSTATHELP/API+SDMX+2.1+-+data+discovery
