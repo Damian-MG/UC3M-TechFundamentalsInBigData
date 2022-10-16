@@ -42,9 +42,8 @@ def getSequence():
 
 def chunking(Lines, Num_threads):
     portions = []
-    cpus = mp.cpu_count()
     chunk_size = int(Lines/Num_threads)
-    for i in range (cpus):
+    for i in range (Num_threads):
         with open(File) as file:
             reader = csv.reader(islice(file,(i*chunk_size+1),(i+1)*chunk_size+1))
             portion = []
@@ -66,7 +65,7 @@ cause some performance degradation.
 """
 if __name__ == '__main__':
     sequence = getSequence()
-    num_threads = 5 # optimal thread number found for 500.000 lines
+    num_threads = 4
     t_stamp = time.time()
     iterdata = chunking(Lines= getLength(File), Num_threads= num_threads)
     results = []
