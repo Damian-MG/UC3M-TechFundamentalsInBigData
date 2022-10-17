@@ -24,6 +24,7 @@ import re
 import matplotlib.pyplot as plt
 import threading
 import multiprocessing as mp
+from multiprocessing import Lock
 from collections import ChainMap
 import subprocess as sp
 
@@ -56,7 +57,9 @@ def countThread(Pattern, Rows):
     occurrences = {}
     for row in Rows:
         occurrences[int(row[0])] = row[1].count(Pattern)
+    mutex.acquire()
     results.append(occurrences) 
+    mutex.release()
 
 """
 If your threads don't do I/O, synchronization, etc., and there's nothing else running, 1 thread per core will get you the
@@ -69,6 +72,7 @@ if __name__ == '__main__':
     t_stamp = time.time()
     iterdata = chunking(Lines= getLength(File), Num_threads= num_threads)
     results = []
+    mutex = Lock()
     iterdata = [(sequence, rows) for rows in iterdata]
     ths = []
     for i, thread in enumerate(iterdata):
