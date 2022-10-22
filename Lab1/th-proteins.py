@@ -30,7 +30,7 @@ import subprocess as sp
 File =  "proteins.csv"
 
 def getLength(file):
-    return int(sp.getoutput("tail "+file+" -n 1 | tr -dc '0-9'"))
+    return int(sp.getoutput("tail -n 1 "+file+"| tr -dc '0-9'")))
 
 def getSequence():
     check = False
