@@ -41,13 +41,8 @@ Method that loads the file onto a Dataset and changes the yes/no columns by a bi
 '''
 def getDataset():
     dataset = pd.read_csv(File)
-    df_cd = pd.get_dummies(dataset["cd"])
-    df_cd = df_cd.rename(columns={"yes":"cd"})
-    df_laptop = pd.get_dummies(dataset["laptop"])
-    df_laptop = df_laptop.rename(columns={"yes":"laptop"})
-    dataset = dataset.drop(["cd"], axis=1)
-    dataset = dataset.drop(["laptop"], axis=1)
-    dataset = pd.concat((dataset, df_cd["cd"], df_laptop["laptop"]),axis=1)
+    dataset['cd'] = dataset['cd'].map( {'yes':1. ,'no':0.})             
+    dataset['laptop'] = dataset['laptop'].map( {'yes':1. ,'no':0.})
     return dataset
 
 '''
